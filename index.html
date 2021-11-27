@@ -60,10 +60,24 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="manifest" href="site.webmanifest" />
+    <style>
+      .main-container {
+        margin-top: 80px;
+      }
+      .top-menu {
+        background-color: white;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 6%) !important;
+      }
+      video {
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+      }
+    </style>
   </head>
   <body class="">
     <a id="start"></a>
-    <nav class="py-3">
+    <nav class="py-3 fixed-top">
       <div class="container">
         <a class="navbar-brand" href="./index.html">
           <img src="./open-meta-logo.png" width="128" />
@@ -72,8 +86,19 @@
     </nav>
     <div class="main-container">
       <section class="cover py-5 text-center py-md-5">
-        <video autoplay muted class="video" loop>
-          <source src="./om.mp4"  />
+        <video
+          autoplay="autoplay"
+          loop="loop"
+          muted
+          defaultMuted
+          playsinline
+          oncontextmenu="return false;"
+          preload="auto"
+          id="myVideo"
+          class="video"
+          style="border: none !important; box-shadow: none !important"
+        >
+          <source src="./om.mp4" type="video/mp4" />
         </video>
         <div class="container pos-vertical-center">
           <div class="row">
@@ -257,5 +282,16 @@
     <script src="js/spectragram.min.js"></script>
     <script src="js/smooth-scroll.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script>
+      $(window).scroll(function () {
+        var height = $(window).scrollTop();
+
+        if (height > 50) {
+          $("nav").addClass("top-menu");
+        } else {
+          $("nav").removeClass("top-menu");
+        }
+      });
+    </script>
   </body>
 </html>
