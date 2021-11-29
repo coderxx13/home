@@ -952,7 +952,8 @@ mr = (function (mr, $, window, document){
             if (typeof originalError !== typeof undefined && originalError !== false) {
                 formError.html(originalError);
             }
-            
+            console.log(mr.forms);
+            console.log(mr.forms.validateFields(thisForm));
             // validateFields returns 1 on error;
             if (mr.forms.validateFields(thisForm) !== 1) {
                
